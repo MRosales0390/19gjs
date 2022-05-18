@@ -22,7 +22,11 @@ console.log(newAgeKoder);
 //convertir °C a °F
 
 let gradosLocalidadKoder = prompt("Dame los °C de tu localidad", 15);
-console.log(gradosLocalidadKoder);
-let gradosLocalidadKoderInt = parseInt(gradosLocalidadKoder);
-let gradosCelsiusAFarenheit = gradosLocalidadKoderInt * (9 / 5) + 32;
-console.log(gradosCelsiusAFarenheit, "°F");
+if (gradosLocalidadKoder === null)
+  console.log("Necesitas especificar los °C de tu localidad");
+else {
+  console.log(gradosLocalidadKoder);
+  let gradosLocalidadKoderInt = parseInt(gradosLocalidadKoder);
+  let gradosCelsiusAFarenheit = gradosLocalidadKoderInt * (9 / 5) + 32;
+  console.log(gradosCelsiusAFarenheit, "°F");
+}
