@@ -12,15 +12,15 @@ if (nombreKoder === null) {
   console.log(nombreKoder);
 }
 */
-
+/*
 let ageKoder = prompt("Dame tu edad", 30);
 console.log(ageKoder);
 let newAgeKoder = parseInt(ageKoder);
 console.log(newAgeKoder);
-
+*/
 //pedir al usuario los grados celsius en su localidad
 //convertir °C a °F
-
+/*
 let gradosLocalidadKoder = prompt("Dame los °C de tu localidad", 15);
 if (gradosLocalidadKoder === null)
   console.log("Necesitas especificar los °C de tu localidad");
@@ -30,3 +30,4 @@ else {
   let gradosCelsiusAFarenheit = gradosLocalidadKoderInt * (9 / 5) + 32;
   console.log(gradosCelsiusAFarenheit, "°F");
 }
+*/
