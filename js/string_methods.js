@@ -7,7 +7,7 @@
 // .substring(start, end)
 // .slice(start, end)
 // .includes(searchElement, fromIndex)
-
+/*
 const p =
   "El ágil zorro café salta sobre el perro perezoso. Sí el perro reaccionó, realmente es perezoso?";
 
@@ -37,4 +37,36 @@ console.log(
   `La palabra ${lookupValue} ${
     p.includes(lookupValue) ? "sí" : "no"
   } se encuentra en el texto.`
+);*/
+
+/**
+ * 'Hola koders'
+ * Cuántas vocales existen
+ */
+
+let testString = "Hola kodEers";
+console.log(
+  `Existen ${
+    testString.match(/[aeiouAEIOU]/g).length
+  } vocales en la cadena ${testString}`
 );
+
+/**
+ * 'Hola koders'
+ * Cuántos caracteres son
+ */
+console.log(`La cadena ${testString} tiene ${testString.length} caracteres`);
+
+/**
+ * 'Hola koders'
+ * Cortar el string en 2 strings
+ * -> "hola" "koders"
+ */
+console.log(testString.split(" "));
+
+/**
+ * 'Hola Koders'
+ * Reemplazar todas las Vocales por *
+ * -> "h*l* k*d*rs"
+ */
+console.log(testString.replace(/[aeiouAEIOU]/g, "*"));
