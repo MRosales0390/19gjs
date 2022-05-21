@@ -50,23 +50,23 @@ if (number >= 1 && number <= 10) {
  * Vocales -> oauo
  */
 let phrase = prompt("Indicar una oración cualquiera", "Hola Mundo");
-let vocals = "aeiou";
-let onlyVocals = "",
+let vowels = "aeiou";
+let onlyVowels = "",
   onlyConsonants = "";
 
 if (phrase.length > 0) {
   phrase = phrase.replaceAll(" ", "").toLocaleLowerCase();
 
   for (let i = 0; i < phrase.length; i++) {
-    if (vocals.includes(phrase[i])) {
-      onlyVocals += phrase[i];
+    if (vowels.includes(phrase[i])) {
+      onlyVowels += phrase[i];
     } else {
       onlyConsonants += phrase[i];
     }
   }
 
   console.log(`Consonantes -> ${onlyConsonants}`);
-  console.log(`Vocales -> ${onlyVocals}`);
+  console.log(`Vocales -> ${onlyVowels}`);
 }
 
 /**
