@@ -44,3 +44,88 @@ for (let i = 0; i < fin; i++) {
   )
     console.log(str[i]);
 }
+
+// imprimir cada palabra de un string -> pasar a while
+console.log("Imprimir cada letra con While");
+let strWhile = "Hola Koder";
+let finWhile = strWhile.length;
+let counter = 0;
+
+while (counter < finWhile) {
+  console.log(strWhile[counter]);
+
+  counter++;
+}
+
+/**
+ * 'Hola Koder'
+ * -> 'redok aloh'
+ * Imprimir el string invertido
+ *
+ *
+ */
+let auxStr = "";
+counter = finWhile - 1;
+
+while (counter >= 0) {
+  auxStr += strWhile[counter].toLowerCase();
+  counter--;
+}
+
+console.log(`${strWhile} -> ${auxStr}`);
+
+/**
+ * 'oaoe'
+ * Imprimir en consola cada una de las vocales
+ *
+ */
+let vowels = "aeiou";
+counter = 0;
+auxStr = "";
+
+while (counter < finWhile) {
+  if (vowels.includes(strWhile[counter].toLowerCase()))
+    auxStr += strWhile[counter].toLowerCase();
+
+  counter++;
+}
+console.log(`Vowels in string ${strWhile} -> ${auxStr}`);
+
+/**
+ * 'HlKdr'
+ * Imprimir en consola cada una de las consonantes
+ *
+ */
+strWhileWithoutSpaces = strWhile.replace(" ", "");
+finWhile = strWhileWithoutSpaces.length;
+counter = 0;
+auxStr = "";
+
+while (counter < finWhile) {
+  if (!vowels.includes(strWhileWithoutSpaces[counter].toLowerCase()))
+    auxStr += strWhileWithoutSpaces[counter].toLowerCase();
+
+  counter++;
+}
+console.log(`Vowels in string ${strWhile} -> ${auxStr}`);
+
+/**
+ * Lo mismo pero con DO WHILE
+ * 'Hola Koder'
+ * -> 'redok aloh'
+ * Imprimir el string invertido
+ *
+ *
+ */
+
+/**
+ * 'oaoe'
+ * Imprimir en consola cada una de las vocales
+ *
+ */
+
+/**
+ * 'HlKdr'
+ * Imprimir en consola cada una de las consonantes
+ *
+ */

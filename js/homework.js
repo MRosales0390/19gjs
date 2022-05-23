@@ -1,118 +1,194 @@
-// Ejercicio 1
-// investigar while, y do while
-let number = parseInt(
-  prompt(
-    "Indique un número entre 1 y 10 para imprimir la tabla de multiplicar",
-    5
-  )
+// Ejercicios
+
+/**
+ * Ejercicio 1
+ * Escribir un programa de arroje la suma de los multiplos de 3, 5 o 7 que hay entre 1 y 100
+ * Resolver con For, While y do While
+ */
+let multiplier = parseInt(
+  prompt("Indique un múltiplo de los siguientes: 3, 5 ó 7", 3)
 );
+let total = 0,
+  counter = 1;
 
-if (number >= 1 && number <= 10) {
-  console.log(`Se imprimirá la tabla del ${number} con ciclo while`);
-  let i = 1;
-  while (i <= 10) {
-    console.log(`${i} x ${number} = ${i * number}`);
-    i++;
+if (multiplier === 3 || multiplier === 5 || multiplier === 7) {
+  /**
+   * CICLO FOR
+   */
+  for (let i = 1; i <= 100; i++) {
+    if (i % multiplier === 0) total += i;
   }
-} else {
-  console.log("Se introdujo un valor inválido");
-}
+  console.log(
+    `[FOR] La sumatoria de los múltiplos de ${multiplier} es ${total}`
+  );
 
-// Utilizar Condicionales, Ciclo for, Metodos de string
+  /**
+   * CICLO WHILE
+   */
+  total = 0;
+
+  while (counter <= 100) {
+    if (counter % multiplier === 0) total += counter;
+
+    counter++;
+  }
+  console.log(
+    `[WHILE] La sumatoria de los múltiplos de ${multiplier} es ${total}`
+  );
+
+  /**
+   * CICLO DO WHILE
+   */
+  total = 0;
+  counter = 1;
+
+  do {
+    if (counter % multiplier === 0) total += counter;
+
+    counter++;
+  } while (counter <= 100);
+  console.log(
+    `[DO-WHILE] La sumatoria de los múltiplos de ${multiplier} es ${total}`
+  );
+} else {
+  console.log(`El valor ${multiplier} es inválido.`);
+}
 
 /**
  * Ejercicio 2
- * Pedir al usuario usuario un numero entre 1 y 10
- * Imprimir la tabla de multiplicar de ese número
- * p.ej. 3
- * 3 x 1 = 3
- * 3 x 2 = 6
- * ....
- * 3 x 10 = 30
+ * Pedir el usuario 1 numero entre 1 y 100
+ * sumar todos los numeros entre el 1 y este numero
+ * Mandar un alert con el  total
+ * Resolver con For, While y do While
+ * p.ej. 5
+ * ->  15
  */
+let number = parseInt(prompt("Indique un número entre 1 y 100", 50));
+let result = 0;
 
-if (number >= 1 && number <= 10) {
-  console.log(`Se imprimirá la tabla del ${number} con ciclo for`);
-  for (let i = 1; i <= 10; i++) {
-    console.log(`${i} x ${number} = ${i * number}`);
+if (number >= 1 && number <= 100) {
+  /**
+   * CICLO FOR
+   * */
+  for (let i = 1; i <= number; i++) {
+    result += i;
   }
+  alert(`"[FOR]La sumatoria total del 1 hasta el ${number} es ${result}"`);
+
+  /**
+   * CICLO WHILE
+   * */
+  let counter = 1;
+  result = 0;
+  while (counter <= number) {
+    result += counter;
+
+    counter++;
+  }
+  alert(`"[WHILE]La sumatoria total del 1 hasta el ${number} es ${result}"`);
+
+  /**
+   * CICLO DO WHILE
+   * */
+  counter = 1;
+  result = 0;
+  do {
+    result += counter;
+
+    counter++;
+  } while (counter <= number);
+  alert(`"[DO-WHILE]La sumatoria total del 1 hasta el ${number} es ${result}"`);
 } else {
-  console.log("Se introdujo un valor inválido");
+  console.log(`El valor ${number} es inválido.`);
 }
 
 /**
  * Ejercicio 3
- * Pedir al usuario una oracion
- * Imprimir un string con todas las vocales
- * Imprimir un string con todas las consonantes
- * p.ej. "Hola mundo"
- * Consonantes -> hlmnd
- * Vocales -> oauo
- */
-let phrase = prompt("Indicar una oración cualquiera", "Hola Mundo");
-let vowels = "aeiou";
-let onlyVowels = "",
-  onlyConsonants = "";
-
-if (phrase.length > 0) {
-  phrase = phrase.replaceAll(" ", "").toLocaleLowerCase();
-
-  for (let i = 0; i < phrase.length; i++) {
-    if (vowels.includes(phrase[i])) {
-      onlyVowels += phrase[i];
-    } else {
-      onlyConsonants += phrase[i];
-    }
-  }
-
-  console.log(`Consonantes -> ${onlyConsonants}`);
-  console.log(`Vocales -> ${onlyVowels}`);
-}
-
-/**
+ * pedir una oracion al usuario
+ * Contar las letras "a" y "e" y espacios,
+ * Resolver con For, While y do While
  *
- * Ejercicio 4
- * Pedir el usuario un numero entre 10 y 100
- * Imprimir todos los numeros pares que existen entre 1 y ese numero
- * p.ej. 12 -> 2,4,6,8,10,12
- *
+ * p.ej. 'hola kodErs'
+ * ->  A -> 1
+ * ->  E -> 1
+ * ->  Espacios -> 1
  */
-let evenNumberTestValue = parseInt(
-  prompt("Indique un valor entre 10 y 100", 50)
+let sentence = prompt(
+  "Indicar una oración cualquiera:",
+  "Felicidades por completar este reto."
 );
-let valuesList = "";
 
-if (evenNumberTestValue >= 10 && evenNumberTestValue <= 100) {
-  for (let i = 1; i <= evenNumberTestValue; i++) {
-    if (i % 2 === 0) {
-      valuesList += `${i},`;
-    }
+let stringLen = sentence.length;
+let totalA = 0,
+  totalE = 0,
+  totalSpaces = 0;
+
+sentence = sentence.toLowerCase();
+
+if (sentence.trim().length >= 1) {
+  /**
+   * CICLO FOR
+   * */
+  for (let i = 0; i < stringLen; i++) {
+    if (sentence[i] === "a") totalA++;
+    else if (sentence[i] === "e") totalE++;
+    else if (sentence[i] === " ") totalSpaces++;
   }
   console.log(
-    `${evenNumberTestValue} -> ${valuesList.substring(
-      0,
-      valuesList.length - 1
-    )}`
+    `[FOR]\nA -> ${totalA}\nE -> ${totalE}\nEspacios -> ${totalSpaces}`
   );
-}
 
+  /**
+   * CICLO WHILE
+   * */
+  totalA = 0;
+  totalE = 0;
+  totalSpaces = 0;
+  let counter = 0;
+
+  while (counter < stringLen) {
+    if (sentence[counter] === "a") totalA++;
+    else if (sentence[counter] === "e") totalE++;
+    else if (sentence[counter] === " ") totalSpaces++;
+
+    counter++;
+  }
+  console.log(
+    `[WHILE]\nA -> ${totalA}\nE -> ${totalE}\nEspacios -> ${totalSpaces}`
+  );
+
+  /**
+   * CICLO DO WHILE
+   * */
+  totalA = 0;
+  totalE = 0;
+  totalSpaces = 0;
+  counter = 0;
+
+  while (counter < stringLen) {
+    if (sentence[counter] === "a") totalA++;
+    else if (sentence[counter] === "e") totalE++;
+    else if (sentence[counter] === " ") totalSpaces++;
+
+    counter++;
+  }
+  console.log(
+    `[DO-WHILE]\nA -> ${totalA}\nE -> ${totalE}\nEspacios -> ${totalSpaces}`
+  );
+} else {
+  console.log("El valor introducido es una cadena inválida");
+}
 /**
+ * Ejercicio 4
+ * Estudiar acerca del tema Funciones
+ * ¿Qué son?
+ * Parametros y argumentos de una funcion
+ * Parametros de una funcion
+ * Parametros opcionales
+ * Parametros por defecto (default)
  *
- * Ejercicio 5. Opcional
- * Pedir el usuario una palabra
- * Invertir esa palabra e imprimirla en consola
- * p.ej. 'Hola' -> 'aloh'
+ * Referencias
+ * https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Functions
+ * https://www.programiz.com/javascript/function
  *
  */
-let inputdWord = prompt("Indica la palabra que será invertida", "Palabrota");
-let reversedWord = "";
-
-if (inputdWord.length > 0) {
-  console.log(`Palabra ingresada ${inputdWord}`);
-
-  for (let i = inputdWord.length - 1; i >= 0; i--) {
-    reversedWord += inputdWord[i].toLowerCase();
-  }
-
-  console.log(`${inputdWord} -> ${reversedWord}`);
-}
