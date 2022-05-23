@@ -165,13 +165,13 @@ if (sentence.trim().length >= 1) {
   totalSpaces = 0;
   counter = 0;
 
-  while (counter < stringLen) {
+  do {
     if (sentence[counter] === "a") totalA++;
     else if (sentence[counter] === "e") totalE++;
     else if (sentence[counter] === " ") totalSpaces++;
 
     counter++;
-  }
+  } while (counter < stringLen);
   console.log(
     `[DO-WHILE]\nA -> ${totalA}\nE -> ${totalE}\nEspacios -> ${totalSpaces}`
   );
