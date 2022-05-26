@@ -1,84 +1,87 @@
 /**
- * Ejercicio 1 *Obligatorio
- * Realizar una funcion que reciba como parametro 1 array
- * Y devuelva un array con solo los elementos Pares de ese array
- * p.ej.
- * -> evenOnly( [1,2,3,4,18] ) -> [2,4,18]
- * -> evenOnly( [10, 2, 5] ) -> [10,2]
- * -> evenOnly() -> 'Se necesita un array'
+ * Funcion que reciba una palabra
+ * Retorne la palabra invertida
  *
+ * reverseStr('hola mundo')
+ * -> 'odnum aloh'
+ *
+ * Usar solo metodos de str y array
  */
-evenOnly = (numbersArray) => {
-  let onlyEvenNumbers = [];
+const reverseStr = (phrase) => {
+  if (phrase) {
+    let strArray = phrase.split("");
+    let reversedArray = strArray.reverse();
+    let reversedStr = reversedArray.join("");
+
+    return reversedStr;
+  } else {
+    return "Valor inválido";
+  }
+};
+
+let phrase = "Hola mundo";
+
+console.log(reverseStr(phrase));
+
+/**
+ * Funcion que reciba un array de numeros
+ * y devuelva el promedio de todos los elementos
+ *
+ * getAverage( [10, 8, 9, 7] )
+ * -> 8.5
+ */
+const getAverage = (numbersArray) => {
+  let sum = 0;
 
   if (numbersArray) {
-    let arrayLenght = numbersArray.length;
+    let arraySize = numbersArray.length;
 
-    for (let i = 0; i < arrayLenght; i++) {
-      if (numbersArray[i] % 2 === 0) {
-        onlyEvenNumbers.push(numbersArray[i]);
-      }
-    }
-
-    return onlyEvenNumbers;
-  } else {
-    return "Se necesita un array";
+    numbersArray.forEach((number) => (sum += number));
+    sum /= arraySize;
   }
+
+  return sum;
 };
 
+let numArray = [10, 8, 9, 7];
+
+console.log(getAverage());
 /**
- * Ejercicio 2 *Opcional
- * Funcion que reciba como parametro una array de strings
- * y devuelva el primer y ultimo caracter de cada string
- * p.ej.
- * -> firstAndLast ( ['hola', 'mundo'] ) -> ['ha', 'mo']
- */
-firstAndLast = (strArray) => {
-  let lettersArray = [];
-
-  if (strArray) {
-    let strArraySize = strArray.length;
-
-    for (let i = 0; i < strArraySize; i++) {
-      lettersArray.push(strArray[i].substring(0, 1) + strArray[i].slice(-1));
-    }
-
-    return lettersArray;
-  } else {
-    return "Se necesita un array";
-  }
-};
-
-/**
- * Ejercicio 3
- * Estudiar todos los métodos de Array
- * https://www.w3schools.com/jsref/jsref_obj_array.asp
- * https://www.programiz.com/javascript/library/array
+ * Funcion que reciba un array de strings
+ * y devuelva un array indicando si son palindromos o no
  *
+ * arePalindrome( ['oso','juan', 'seres'] )
+ * -> [true, false, true]
  */
+const arePalindrome = (stringArray) => {
+  if (stringArray) {
+    let arePalindromes = stringArray.map((word) => {
+      word = word.replaceAll(" ", "");
+      let splittedWord = word.split("");
+      let reversedWord = splittedWord.reverse().join("");
 
-/**
- * array.forEach()
- */
-console.log("**** Array.forEach() ****");
-let strTestArray = ["Hola", "Mundos", "Koder", "Javascript"];
+      for (let i = 0; i < word.length; i++) {
+        if (word[i] !== reversedWord[i]) return false;
+      }
 
-const printValue = (element, index) => {
-  console.log(`El elemento actual es ${element} en la posición ${index}`);
+      return true;
+    });
+
+    return arePalindromes;
+  } else {
+    return "Valor inválido";
+  }
 };
 
-strTestArray.forEach(printValue);
+let palindromesArray = ["oso", "juan", "seres"];
+
+console.log(arePalindrome(palindromesArray));
 
 /**
- * array.reduce()
+ * Estudiar los métodos de array
+ * .filter()
+ * .reduce()
  */
-console.log("**** Array.reduce() ****");
-const joinStrings = (accumulator, currentValue) => {
-  return accumulator + currentValue;
-};
-
-let joinedString = strTestArray.reduce(joinStrings);
-console.log(joinedString);
 
 /**
  *  array.filter()
@@ -96,17 +99,23 @@ let evenNumbers = numbersArrayFilter.filter(checkEven);
 console.log(evenNumbers);
 
 /**
- * Sort
- * Modifies the current array
+ *  array.reduce()
+ *  returns a new array
  */
-console.log("**** Array.sort() ****");
+console.log("**** Array.reduce() ****");
+const getAverageWithReduce = (numbersArray) => {
+  let sum = 0;
 
-const sortArray = (a, b) => {
-  return a.length - b.length;
+  if (numbersArray) {
+    let arraySize = numbersArray.length;
+
+    sum =
+      numbersArray.reduce((accumulator, number) => accumulator + number) /
+      arraySize;
+  }
+
+  return sum;
 };
 
-strTestArray.sort();
-console.log(strTestArray);
-
-strTestArray.sort(sortArray);
-console.log(strTestArray);
+let numArrayForReduce = [10, 8, 9, 7];
+console.log(getAverageWithReduce(numArrayForReduce));
