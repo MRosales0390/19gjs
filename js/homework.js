@@ -56,3 +56,57 @@ firstAndLast = (strArray) => {
  * https://www.programiz.com/javascript/library/array
  *
  */
+
+/**
+ * array.forEach()
+ */
+console.log("**** Array.forEach() ****");
+let strTestArray = ["Hola", "Mundos", "Koder", "Javascript"];
+
+const printValue = (element, index) => {
+  console.log(`El elemento actual es ${element} en la posición ${index}`);
+};
+
+strTestArray.forEach(printValue);
+
+/**
+ * array.reduce()
+ */
+console.log("**** Array.reduce() ****");
+const joinStrings = (accumulator, currentValue) => {
+  return accumulator + currentValue;
+};
+
+let joinedString = strTestArray.reduce(joinStrings);
+console.log(joinedString);
+
+/**
+ *  array.filter()
+ *  returns a new array
+ */
+console.log("**** Array.filter() ****");
+const checkEven = (number) => {
+  if (number % 2 == 0) return true;
+  else return false;
+};
+
+let numbersArrayFilter = [1, 2, 3, 4, 18];
+let evenNumbers = numbersArrayFilter.filter(checkEven);
+
+console.log(evenNumbers);
+
+/**
+ * Sort
+ * Modifies the current array
+ */
+console.log("**** Array.sort() ****");
+
+const sortArray = (a, b) => {
+  return a.length - b.length;
+};
+
+strTestArray.sort();
+console.log(strTestArray);
+
+strTestArray.sort(sortArray);
+console.log(strTestArray);
