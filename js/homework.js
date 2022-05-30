@@ -1,121 +1,107 @@
 /**
- * Funcion que reciba una palabra
- * Retorne la palabra invertida
+ * Tarea
+ * REalizar los siguientes 3 ejercicios
  *
- * reverseStr('hola mundo')
- * -> 'odnum aloh'
+ */
+
+/**
+ * 1. funcion con .reduce()
+ * capitalizeNames( ['jorge','lUis', 'marcOs', 'mario'] )
+ * -> ['Jorge','Luis', 'Marcos', 'Mario']
+ */
+let namesList = ["jorge", "lUis", "marcOs", "mario"];
+
+const capitalizeName = (names) => {
+  let capitalizedArray = [];
+
+  capitalizedArray = names.reduce((namesContainer, nextName) => {
+    namesContainer.push(
+      nextName.charAt(0).toUpperCase() + nextName.slice(1).toLowerCase()
+    );
+    return namesContainer;
+  }, []);
+
+  return capitalizedArray;
+};
+
+console.log(
+  `Original array: ${namesList}; \nCapitilized array: ${capitalizeName(
+    namesList
+  )}`
+);
+
+//Smaller version
+const capilizeNameSmaller = (names) => {
+  return names.reduce((namesContainer, nextName) => {
+    namesContainer.push(
+      nextName.charAt(0).toUpperCase() + nextName.slice(1).toLowerCase()
+    );
+    return namesContainer;
+  }, []);
+};
+
+console.log(
+  `Original array: ${namesList}; \nCapitilized array: ${capilizeNameSmaller(
+    namesList
+  )}`
+);
+
+/**
+ * 2. funcion con .reduce()
+ * Dado un array de numeros, filtras solo los pares
+ * filterEvens( [2,3,4,5] )
+ * -> [2,4]
+ */
+let numbersArray = [2, 3, 4, 5, 7, 8, 10, 12, 13, 15, 18];
+
+const filterEvens = (numbers) => {
+  return numbers.reduce((numbersList, nextNumber) => {
+    if (nextNumber % 2 === 0) numbersList.push(nextNumber);
+
+    return numbersList;
+  }, []);
+};
+
+console.log(`Even numbers list: ${filterEvens(numbersArray)}`);
+/**
+ * 3. funcion con .reduce()
+ * Dado un array de numeros, obtener la suma de solo los elementos positivos
+ * addAllPositives( [ 1, -4, 12, 0, -3, 29, -150] )
+ * -> 42
+ */
+let numArray = [1, -4, 12, 0, -3, 29, -150];
+
+const addAllPositives = (numbers) => {
+  return numbers.reduce(
+    (sum, nextNumber) => sum + (nextNumber > 0 ? nextNumber : 0),
+    0
+  );
+};
+
+console.log(`Sum total: ${addAllPositives(numArray)}`);
+
+/**
+ * 4. Estudiar Objetos y métodos de objetos
  *
- * Usar solo metodos de str y array
- */
-const reverseStr = (phrase) => {
-  if (phrase) {
-    let strArray = phrase.split("");
-    let reversedArray = strArray.reverse();
-    let reversedStr = reversedArray.join("");
-
-    return reversedStr;
-  } else {
-    return "Valor inválido";
-  }
-};
-
-let phrase = "Hola mundo";
-
-console.log(reverseStr(phrase));
-
-/**
- * Funcion que reciba un array de numeros
- * y devuelva el promedio de todos los elementos
- *
- * getAverage( [10, 8, 9, 7] )
- * -> 8.5
- */
-const getAverage = (numbersArray) => {
-  let sum = 0;
-
-  if (numbersArray) {
-    let arraySize = numbersArray.length;
-
-    numbersArray.forEach((number) => (sum += number));
-    sum /= arraySize;
-  }
-
-  return sum;
-};
-
-let numArray = [10, 8, 9, 7];
-
-console.log(getAverage());
-/**
- * Funcion que reciba un array de strings
- * y devuelva un array indicando si son palindromos o no
- *
- * arePalindrome( ['oso','juan', 'seres'] )
- * -> [true, false, true]
- */
-const arePalindrome = (stringArray) => {
-  if (stringArray) {
-    let arePalindromes = stringArray.map((word) => {
-      word = word.replaceAll(" ", "");
-      let splittedWord = word.split("");
-      let reversedWord = splittedWord.reverse().join("");
-
-      for (let i = 0; i < word.length; i++) {
-        if (word[i] !== reversedWord[i]) return false;
-      }
-
-      return true;
-    });
-
-    return arePalindromes;
-  } else {
-    return "Valor inválido";
-  }
-};
-
-let palindromesArray = ["oso", "juan", "seres"];
-
-console.log(arePalindrome(palindromesArray));
-
-/**
- * Estudiar los métodos de array
- * .filter()
- * .reduce()
  */
 
 /**
- *  array.filter()
- *  returns a new array
+ * Opcional
+ * funcion con .reduce()
+ * Dado un array de palabras, filtras las que son palindromos
+ * onlyPalindrome( ['oso','pedro', 'jorge', 'seres'] )
+ * -> ['oso','seres']
  */
-console.log("**** Array.filter() ****");
-const checkEven = (number) => {
-  if (number % 2 == 0) return true;
-  else return false;
+let words = ["oso", "pedro", "jorge", "seres"];
+
+const onlyPalindrome = (wordList) => {
+  return wordList.reduce((wordArray, nextWord) => {
+    let reversedWord = nextWord.split("").reverse().join("");
+
+    if (nextWord === reversedWord) wordArray.push(nextWord);
+
+    return wordArray;
+  }, []);
 };
 
-let numbersArrayFilter = [1, 2, 3, 4, 18];
-let evenNumbers = numbersArrayFilter.filter(checkEven);
-
-console.log(evenNumbers);
-
-/**
- *  array.reduce()
- *  returns a new array
- */
-console.log("**** Array.reduce() ****");
-const getAverageWithReduce = (numbersArray) => {
-  let sum = 0;
-
-  if (numbersArray) {
-    let arraySize = numbersArray.length;
-
-    sum =
-      numbersArray.reduce((accumulator, number) => accumulator + number) /
-      arraySize;
-  }
-
-  return sum;
-};
-
-let numArrayForReduce = [10, 8, 9, 7];
-console.log(getAverageWithReduce(numArrayForReduce));
+console.log(onlyPalindrome(words));
