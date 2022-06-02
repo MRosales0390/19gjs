@@ -7,150 +7,8 @@
  * https://www.w3schools.com/js/js_objects.asp
  *
  */
-let koderObj = {
-  firstName: "marco",
-  lastName: "rosales",
-  age: 32,
-  gender: "male",
-  nationality: "mexican",
-  birthDate: "1990-03-02",
-  bootcamp_data: {
-    generation: 19,
-    skill: "js",
-    profile: "fullstack developer",
-    schedule_days: "mon - fri",
-    schedule_time: "19:00 - 22:00",
-    isActive: true,
-  },
-};
-
-const getIntroductionMessage = (koder) => {
-  let message = `
-      Hola! mi nombre es ${koder.firstName} ${koder.lastName}. 
-      Actualmente tengo ${koder.age} años y soy alumno de la generación 
-      número ${koder.bootcamp_data.generation} del bootcamp 
-      de ${koder.bootcamp_data.skill}, del cual saldremos con un 
-      perfil ${koder.bootcamp_data.profile}`;
-
-  return message;
-};
-
-console.log(getIntroductionMessage(koderObj));
-
-let newKoderObject = {};
-
-newKoderObject.firstName = "marco";
-newKoderObject.lastName = "rosales";
-newKoderObject.age = 32;
-newKoderObject.gender = "male";
-newKoderObject.nationality = "mexican";
-newKoderObject.birthDate = "1990-03-02";
-newKoderObject.bootcamp_data = {
-  generation: 19,
-  skill: "js",
-  profile: "fullstack developer",
-  schedule_days: "mon - fri",
-  schedule_time: "19:00 - 22:00",
-  isActive: true,
-};
-
-newKoderObject.bootcamp_data.score = 90;
-
-console.log(newKoderObject);
-
-let newKoderObject2 = {};
-
-newKoderObject2["firstName"] = "marco";
-newKoderObject2["lastName"] = "rosales";
-newKoderObject2["age"] = 32;
-newKoderObject2["gender"] = "male";
-newKoderObject2["nationality"] = "mexican";
-newKoderObject2["birthDate"] = "1990-03-02";
-newKoderObject2["bootcamp_data"] = {};
-newKoderObject2["bootcamp_data"]["generation"] = 19;
-newKoderObject2["bootcamp_data"]["skill"] = "js";
-newKoderObject2["bootcamp_data"]["profile"] = "fullstack developer";
-newKoderObject2["bootcamp_data"]["schedule_days"] = "mon - fri";
-newKoderObject2["bootcamp_data"]["schedule_time"] = "19:00 - 22:00";
-newKoderObject2["bootcamp_data"]["isActive"] = true;
-
-console.log(newKoderObject2);
-
-let objSalarios = {
-  lenny: "30000",
-  Ernesto: "20000",
-  jorge: "20000",
-  Kike: "25000",
-};
-
-/**
- * Ejercicio 1:
- * Calcular el total de salarios
- * -> 95000
- */
-//const getTotal = (salaryObject) => {
-let total = 0;
-for (item in objSalarios) {
-  total += parseInt(objSalarios[item]);
-}
-//return total;
-//};
-
-console.log(`Salario total = ${total}`);
-/**
- * Ejercicio 2:
- * Pasar el ejercicio 1 a función flecha
- * Debe recibir 1 parametro
- * Objeto de salarios
- */
-const getTotal = (salaryObject) => {
-  let total = 0;
-  for (item in salaryObject) {
-    total += parseInt(salaryObject[item]);
-  }
-  return total;
-};
-
-console.log(`Salario total con función = ${getTotal(objSalarios)}`);
-/**
- * Ejercicio 3:
- * Escribir una funcion que reciba un parametro
- * Verificar si el parametro es un objeto
- * o si es un array
- * p.ej.
- * ·> isAnObjectOrArray( [1,2,3] )
- * -> 'Es un array'
- * ·> isAnObjectOrArray( {key:'value'} )
- * -> 'Es un Objeto'
- * ·> isAnObjectOrArray( 'Hola mundo' )
- * -> 'No es un array ni un objeto'
- *
- *
- * @params {Object}, [Array] ,'string' - Estructura que se quiere validar
- * @return 'String' - mensaje de respuesta
- *
- * @hint https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
- * @hint https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
- *
- */
-let arrayEx = [1, 2, 3];
-let string = "";
-const isAnObjectOrArray = (element) => {
-  if (Array.isArray(element)) {
-    return `Es un array`;
-  } else if (typeof element === "object") {
-    return `Es un objeto`;
-  } else {
-    return `No es un array ni un objeto`;
-  }
-};
-
-console.log(isAnObjectOrArray(objSalarios), objSalarios);
-console.log(isAnObjectOrArray(arrayEx), arrayEx);
-console.log(isAnObjectOrArray(string), string);
-
 //CRUD
-
+/*
 // Create
 let objectCar = {
   model: "jetta",
@@ -159,6 +17,16 @@ let objectCar = {
   cilindraje: 2,
   color: "rojo",
 };
+
+let arrKeys = [];
+for (propiedad in objectCar) {
+  arrKeys.push(propiedad);
+}
+console.log(arrKeys);
+
+// Object.keys(obj)
+let llaves = Object.keys(objectCar);
+console.log(llaves);
 
 // Read
 console.log(objectCar.model);
@@ -170,3 +38,74 @@ objectCar.color = "verde";
 console.log(objectCar);
 delete objectCar.cilindraje;
 console.log(objectCar);
+
+let employees = {
+  Jorge: 1000,
+  Carlos: 2000,
+  Manuel: 3000,
+};
+
+//let totalEmpleados = employees.keys().
+*/
+/**
+ * Ejercicio 1.
+ * Realizar una funcion que tome como parametro un objeto
+ * y devuelva un array de arrays con la siguiente estructura
+ * [ [key, value], [key, value] ]
+ * makePairs( { a: 1, b: 2 } )
+ * => [ ['a', 1], ['b', 2]]
+ *
+ *
+ * @hint https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
+ * @hint https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+ *
+ * Se tiene que realizar 2 soluciones,
+ * 1 con Object.entries() y
+ *  Otra con .map()
+ */
+let pairs = { a: 1, b: 2 };
+// solución con .entries()
+const makePairs = (object) => {
+  let pairsArray;
+  if (object) pairsArray = Object.entries(object);
+
+  return pairsArray;
+};
+
+console.log("makePairs -> ", makePairs(pairs));
+
+// solución con .map()
+const makePairsMap = (object) => {
+  if (object) {
+    let keys = Object.keys(object);
+    //let values = Object.values(object);
+
+    //return keys.map((key, index) => [key, values[index]]);
+    return keys.map((key, index) => [key, object[key]]);
+  }
+};
+
+console.log("makePairsMap -> ", makePairsMap(pairs));
+/**
+ * Dado un objeto de salarios
+ * Crear una funcion que retorne una lista
+ * con los salarios ordenados de menor a mayor
+ * orderSalary( salarios)
+ * -> [4000, 5000, 7000]
+ */
+let salarios = {
+  juan: 7000,
+  Albert: 4000,
+  jorge: 5000,
+};
+
+const orderSalary = (object) => {
+  if (object) {
+    return Object.values(object).sort();
+    /* return Object.values(object).sort((a, b) => {
+      return a - b;
+    });*/
+  }
+};
+
+console.log("Ordered Salaries -> ", orderSalary(salarios));

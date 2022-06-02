@@ -1,112 +1,207 @@
-// Ejercicio
-/**
- * Del siguiente objeto
- * Realizar una función que
- * 1. Calcule el numero de empleados
- * 2. Obtenga el total a pagar
- * employesAndTotal( { 'Albert': 50000, 'jorge': 50000 })
- * -> Son 3 empleados y el total es 100000
- */
-
-let salarios = {
-  juan: 30000,
-  Albert: 50000,
-  jorge: 50000,
-};
-
-const employesAndTotal = (obj) => {
-  let totals = {
-    employeesNumber: 0,
-    totalSalary: 0,
-  };
-
-  for (employee in obj) {
-    let currentKey = employee;
-    let employees = obj;
-
-    totals.employeesNumber += 1;
-    totals.totalSalary += obj[employee];
-  }
-
-  return totals;
-};
-
-let totals = employesAndTotal(salarios);
-
-console.log(
-  `Son ${totals.employeesNumber} y el total es ${totals.totalSalary}`
-);
-
-/**
- * Ejercicio 2.
- * Dado un objeto inicial, hacer los siguientes puntos
- *
- * 1. Agregar el lenguaje 'Go' a la lista de lenguajes
- * 2. Cambiar el nivel a 4
- * 3. Eliminar la propiedad avatar
- * 4. Agregar una nueva propiedad de edad y poner el valor de 30
- * 5. Imprimir en consola todos los lenguajes dominados
- * 6. Clonar el objeto en uno nuevo
- * 7. Imprimir en consola el nuevo objeto
- *
- * @hint https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
- */
-
-let koder = {
-  languages: ["JavaScript", "Python", "Ruby"],
-  isMentor: true,
-  level: 3,
-  avatar: "https://picsum.photos/200/300",
-};
-console.log(koder);
-
-//1
-koder["languages"].push("Go");
-//2
-koder.level = 4;
-//3
-delete koder.avatar;
-//4
-koder.age = 30;
-//5
-console.log(`Lenguajes dominados: ${koder.languages}`);
-//6
-let clonedKoderObject = Object.assign({}, koder);
-//7
-console.log("clonedKoderObject", clonedKoderObject);
-
-console.log("Original object: ", koder);
-
-/**
- * Estudiar los metodos de objetos
- * https://www.w3schools.com/js/js_object_methods.asp
- * https://www.digitalocean.com/community/tutorials/how-to-use-object-methods-in-javascript
- * https://www.programiz.com/javascript/library/object/assign
- *
- */
-
-// is
-let firstObject = window;
-let secondObject = window;
-
-console.log(
-  `${firstObject} es igual a ${secondObject} = ${Object.is(
-    firstObject,
-    secondObject
-  )}`
-);
-
-// seal
-let newObject = {
+/*
+// Object Creation 
+let newSealedObject = {
   name: "Marco",
   age: 32,
 };
 
-let newSealedObject = Object.seal(newObject);
+let newNonSealedObject = {
+  name: "Marco",
+  age: 32,
+};
 
-console.log(newObject === newSealedObject);
+// Object.is( firstValue, secondValue )
+console.log(
+  "Are newNonSealedObject and newSealedObject equal?",
+  Object.is(newNonSealedObject, newSealedObject)
+);
 
-newSealedObject.lastName = "Rosales";
-console.log(newSealedObject);
-console.log(`newObject is sealed: ${Object.isSealed(newObject)}`);
-console.log(`newSealedObject is sealed: ${Object.isSealed(newSealedObject)}`);
+console.log("Are 0 and 0 equal?", Object.is(0, 0));
+
+// Object.seal( obj )
+// Object seal 
+Object.seal(newSealedObject);
+
+// Object.isSealed 
+console.log(`Is newSealedObject sealed? ${Object.isSealed(newSealedObject)}`);
+console.log(
+  `Is newNonSealedObject sealed? ${Object.isSealed(newNonSealedObject)}`
+);
+
+console.log("newSealedObject", newSealedObject);
+console.log("newNonSealedObject", newNonSealedObject);
+
+// Object extension 
+newSealedObject.gender = "Male"; //Sealed object silently denies object extension
+newNonSealedObject.gender = "Male"; //Unsealed object allows object extension
+
+console.log("newSealedObject", newSealedObject);
+console.log("newNonSealedObject", newNonSealedObject);
+
+newSealedObject.age = 33; //Sealed object allows property value modification
+newNonSealedObject.age = 33; //Unsealed object allows property value modification
+
+console.log("newSealedObject", newSealedObject);
+console.log("newNonSealedObject", newNonSealedObject);
+
+// Freeze
+// Object Creation 
+let newFrozenObject = {
+  name: "Marco",
+  age: 32,
+};
+
+let newNonFrozenObject = {
+  name: "Marco",
+  age: 32,
+};
+
+Object.freeze(newFrozenObject);
+
+// Object.isFrozen 
+console.log(`Is newFrozenObject frozen? ${Object.isFrozen(newFrozenObject)}`);
+console.log(
+  `Is newNonFrozenObject frozen? ${Object.isFrozen(newNonFrozenObject)}`
+);
+
+console.log("newFrozenObject", newFrozenObject);
+console.log("newNonFrozenObject", newNonFrozenObject);
+
+// Object extension 
+newFrozenObject.gender = "Male"; //Frozen object silently denies object extension
+newNonFrozenObject.gender = "Male"; //Unfrozen object allows object extension
+
+console.log("newFrozenObject", newFrozenObject);
+console.log("newNonFrozenObject", newNonFrozenObject);
+
+newFrozenObject.age = 33; //Sealed object allows property value modification
+newNonFrozenObject.age = 33; //Unfrozen object allows property value modification
+
+console.log("newFrozenObject", newFrozenObject);
+console.log("newNonFrozenObject", newNonFrozenObject);
+*/
+
+/**
+ * Dado un array de objetos koders
+ * Imprimir en consola, todos los nombres de cada koder
+ *
+ * 'jorge luis Camarillo tiene 30 años y es de la generacion 6'
+ * 'Erik Gutierrez tiene 30 años y es de la generacion 16'
+ * ....
+ *
+ */
+
+let koders = [
+  {
+    name: "jorge luis",
+    lastName: "Camarillo",
+    age: 30,
+    generation: 6,
+    modulos: ["js", "node js", "cloud"],
+  },
+  {
+    name: "Erik",
+    lastName: "Gutierrez",
+    age: 20,
+    generation: 15,
+    modulos: ["js"],
+  },
+  {
+    name: "Sara",
+    lastName: "Reveles",
+    age: 24,
+    generation: 12,
+    modulos: ["js"],
+  },
+];
+
+const printKodersName = (kodersArray) => {
+  if (kodersArray) {
+    kodersArray.forEach((object) =>
+      console.log(
+        `${object.name} ${object.lastName} tiene ${object.age} años y es de la generación ${object.generation}`
+      )
+    );
+  }
+  return;
+};
+
+printKodersName(koders);
+
+/**
+ * Del mismo array de koders
+ * Obtener la suma de todas las edades
+ *
+ */
+const printAgesSum = (kodersArray) => {
+  if (kodersArray) {
+    return kodersArray.reduce((total, koder) => {
+      return (total += koder["age"]);
+    }, 0);
+  }
+  return;
+};
+
+console.log(`printAgesSum(koders) -> ${printAgesSum(koders)}`);
+/**
+ * Del objeto library
+ * 1. Obtener el numero de libros que se estan leyendo
+ * 2. Obtener una lista de todos los autores
+ * 3. Obtener una lista de todos los Libros
+ *
+ */
+let library = [
+  {
+    author: "Bill Gates",
+    title: "The Road Ahead",
+    readingStatus: true,
+  },
+  {
+    author: "Steve Jobs",
+    title: "Walter Isaacson",
+    readingStatus: true,
+  },
+  {
+    author: "Suzanne Collins",
+    title: "Mockingjay: The Final Book of The Hunger Games",
+    readingStatus: false,
+  },
+];
+
+// 1
+const getBooksRead = (booksArray) => {
+  if (booksArray) {
+    //return booksArray
+    //  .filter((book) => book.readingStatus === true)
+    //  .reduce((booksRead) => (booksRead += 1), 0);
+
+    return booksArray.filter((book) => book.readingStatus).length;
+  }
+};
+console.log(`Número de libros leídos -> ${getBooksRead(library)}`);
+
+// 2
+const getAuthorsList = (booksArray) => {
+  if (booksArray) {
+    return booksArray.reduce((authors, currentBook) => {
+      if (authors.indexOf(currentBook["author"]) === -1)
+        authors.push(currentBook.author);
+
+      return authors;
+    }, []);
+  }
+};
+console.log(`Lista de autores -> ${getAuthorsList(library)}`);
+
+// 3
+const getBooksList = (booksArray) => {
+  if (booksArray) {
+    return booksArray.reduce((books, currentBook) => {
+      if (books.indexOf(currentBook.title) === -1)
+        books.push(currentBook["title"]);
+
+      return books;
+    }, []);
+  }
+};
+console.log(`Lista de autores -> ${getBooksList(library)}`);
