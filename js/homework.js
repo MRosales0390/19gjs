@@ -84,3 +84,29 @@ console.log("Original object: ", koder);
  * https://www.programiz.com/javascript/library/object/assign
  *
  */
+
+// is
+let firstObject = window;
+let secondObject = window;
+
+console.log(
+  `${firstObject} es igual a ${secondObject} = ${Object.is(
+    firstObject,
+    secondObject
+  )}`
+);
+
+// seal
+let newObject = {
+  name: "Marco",
+  age: 32,
+};
+
+let newSealedObject = Object.seal(newObject);
+
+console.log(newObject === newSealedObject);
+
+newSealedObject.lastName = "Rosales";
+console.log(newSealedObject);
+console.log(`newObject is sealed: ${Object.isSealed(newObject)}`);
+console.log(`newSealedObject is sealed: ${Object.isSealed(newSealedObject)}`);
