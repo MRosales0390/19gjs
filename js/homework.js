@@ -1,94 +1,32 @@
-/*
-// Object Creation 
-let newSealedObject = {
-  name: "Marco",
-  age: 32,
-};
+/**
+ * Ejercicio 1
+ * <ul id="menu" class="menu">
+        <li class="item__menu">Home</li>
+        <li class="item__menu">Products</li>
+        <li class="item__menu">About Us</li>
+    </ul>
+    Replicar con JS este markup
+ */
+let itemsArray = ["Home", "Products", "About Us"];
 
-let newNonSealedObject = {
-  name: "Marco",
-  age: 32,
-};
+let unorderedList = document.createElement("ul");
+unorderedList.setAttribute("id", "menu");
+unorderedList.setAttribute("class", "menu");
 
-// Object.is( firstValue, secondValue )
-console.log(
-  "Are newNonSealedObject and newSealedObject equal?",
-  Object.is(newNonSealedObject, newSealedObject)
-);
+itemsArray.forEach((item) => {
+  let itemList = document.createElement("li");
 
-console.log("Are 0 and 0 equal?", Object.is(0, 0));
-
-// Object.seal( obj )
-// Object seal 
-Object.seal(newSealedObject);
-
-// Object.isSealed 
-console.log(`Is newSealedObject sealed? ${Object.isSealed(newSealedObject)}`);
-console.log(
-  `Is newNonSealedObject sealed? ${Object.isSealed(newNonSealedObject)}`
-);
-
-console.log("newSealedObject", newSealedObject);
-console.log("newNonSealedObject", newNonSealedObject);
-
-// Object extension 
-newSealedObject.gender = "Male"; //Sealed object silently denies object extension
-newNonSealedObject.gender = "Male"; //Unsealed object allows object extension
-
-console.log("newSealedObject", newSealedObject);
-console.log("newNonSealedObject", newNonSealedObject);
-
-newSealedObject.age = 33; //Sealed object allows property value modification
-newNonSealedObject.age = 33; //Unsealed object allows property value modification
-
-console.log("newSealedObject", newSealedObject);
-console.log("newNonSealedObject", newNonSealedObject);
-
-// Freeze
-// Object Creation 
-let newFrozenObject = {
-  name: "Marco",
-  age: 32,
-};
-
-let newNonFrozenObject = {
-  name: "Marco",
-  age: 32,
-};
-
-Object.freeze(newFrozenObject);
-
-// Object.isFrozen 
-console.log(`Is newFrozenObject frozen? ${Object.isFrozen(newFrozenObject)}`);
-console.log(
-  `Is newNonFrozenObject frozen? ${Object.isFrozen(newNonFrozenObject)}`
-);
-
-console.log("newFrozenObject", newFrozenObject);
-console.log("newNonFrozenObject", newNonFrozenObject);
-
-// Object extension 
-newFrozenObject.gender = "Male"; //Frozen object silently denies object extension
-newNonFrozenObject.gender = "Male"; //Unfrozen object allows object extension
-
-console.log("newFrozenObject", newFrozenObject);
-console.log("newNonFrozenObject", newNonFrozenObject);
-
-newFrozenObject.age = 33; //Sealed object allows property value modification
-newNonFrozenObject.age = 33; //Unfrozen object allows property value modification
-
-console.log("newFrozenObject", newFrozenObject);
-console.log("newNonFrozenObject", newNonFrozenObject);
-*/
+  itemList.textContent = item;
+  itemList.setAttribute("class", "item__menu");
+  unorderedList.appendChild(itemList);
+});
+document.querySelector(".content").appendChild(unorderedList);
 
 /**
- * Dado un array de objetos koders
- * Imprimir en consola, todos los nombres de cada koder
- *
- * 'jorge luis Camarillo tiene 30 años y es de la generacion 6'
- * 'Erik Gutierrez tiene 30 años y es de la generacion 16'
- * ....
- *
+ * Dado un arreglo de koders
+ * 1. Generar una lista con la clase koders
+ * 2. Agregar a cada koder en esa lista
+ * 3. A todos los koders agregarles la clase 'item koder'
  */
 
 let koders = [
@@ -104,7 +42,7 @@ let koders = [
     lastName: "Gutierrez",
     age: 20,
     generation: 15,
-    modulos: ["js"],
+    modulos: ["Node"],
   },
   {
     name: "Sara",
@@ -115,93 +53,68 @@ let koders = [
   },
 ];
 
-const printKodersName = (kodersArray) => {
-  if (kodersArray) {
-    kodersArray.forEach((object) =>
-      console.log(
-        `${object.name} ${object.lastName} tiene ${object.age} años y es de la generación ${object.generation}`
-      )
-    );
-  }
-  return;
-};
+let kodersUl = document.createElement("ul");
+kodersUl.setAttribute("class", "koders");
 
-printKodersName(koders);
+koders.forEach((item) => {
+  let koder = document.createElement("li");
+
+  koder.textContent = `${item.name} ${item.lastName}`;
+  koder.setAttribute("class", "item__koder");
+  kodersUl.appendChild(koder);
+});
+document.querySelector(".koder-section").appendChild(kodersUl);
 
 /**
- * Del mismo array de koders
- * Obtener la suma de todas las edades
+ * Opcional
+ * Del mismo arreglo de koders
+ * 1. Generar una tabla de koders con las columnas
+ *   - Nombre completo
+ *   - Edad
+ *   - Generación
+ *
+ *   Opcional -Modulos cursados
+ *
+ * Referencia: https://slack-files.com/TCRFJBKB6-F03J4CBCBA7-8b1c39e7bc
  *
  */
-const printAgesSum = (kodersArray) => {
-  if (kodersArray) {
-    return kodersArray.reduce((total, koder) => {
-      return (total += koder["age"]);
-    }, 0);
-  }
-  return;
-};
+let kodersTable = document.createElement("table");
+let nameHeader = document.createElement("th");
+let ageHeader = document.createElement("th");
+let generationHeader = document.createElement("th");
+let modulesHeader = document.createElement("th");
+let row = document.createElement("tr");
 
-console.log(`printAgesSum(koders) -> ${printAgesSum(koders)}`);
-/**
- * Del objeto library
- * 1. Obtener el numero de libros que se estan leyendo
- * 2. Obtener una lista de todos los autores
- * 3. Obtener una lista de todos los Libros
- *
- */
-let library = [
-  {
-    author: "Bill Gates",
-    title: "The Road Ahead",
-    readingStatus: true,
-  },
-  {
-    author: "Steve Jobs",
-    title: "Walter Isaacson",
-    readingStatus: true,
-  },
-  {
-    author: "Suzanne Collins",
-    title: "Mockingjay: The Final Book of The Hunger Games",
-    readingStatus: false,
-  },
-];
+nameHeader.textContent = "Nombre completo";
+ageHeader.textContent = "Edad";
+generationHeader.textContent = "Generación";
+modulesHeader.textContent = "Módulos cursados";
 
-// 1
-const getBooksRead = (booksArray) => {
-  if (booksArray) {
-    //return booksArray
-    //  .filter((book) => book.readingStatus === true)
-    //  .reduce((booksRead) => (booksRead += 1), 0);
+row.appendChild(nameHeader);
+row.appendChild(ageHeader);
+row.appendChild(generationHeader);
+row.appendChild(modulesHeader);
+kodersTable.appendChild(row);
 
-    return booksArray.filter((book) => book.readingStatus).length;
-  }
-};
-console.log(`Número de libros leídos -> ${getBooksRead(library)}`);
+koders.forEach((item) => {
+  let koderRow = document.createElement("tr");
+  let nameColumn = document.createElement("td");
+  let ageColumn = document.createElement("td");
+  let generationColumn = document.createElement("td");
+  let modulesColumn = document.createElement("td");
 
-// 2
-const getAuthorsList = (booksArray) => {
-  if (booksArray) {
-    return booksArray.reduce((authors, currentBook) => {
-      if (authors.indexOf(currentBook["author"]) === -1)
-        authors.push(currentBook.author);
+  nameColumn.textContent = `${item.name} ${item.lastName}`;
+  ageColumn.textContent = `${item.age}`;
+  generationColumn.textContent = `${item.generation}`;
+  modulesColumn.textContent = `${item.modulos
+    .reduce((modules, currentModule) => (modules += `${currentModule}, `), "")
+    .slice(0, -2)}`;
 
-      return authors;
-    }, []);
-  }
-};
-console.log(`Lista de autores -> ${getAuthorsList(library)}`);
+  koderRow.appendChild(nameColumn);
+  koderRow.appendChild(ageColumn);
+  koderRow.appendChild(generationColumn);
+  koderRow.appendChild(modulesColumn);
 
-// 3
-const getBooksList = (booksArray) => {
-  if (booksArray) {
-    return booksArray.reduce((books, currentBook) => {
-      if (books.indexOf(currentBook.title) === -1)
-        books.push(currentBook["title"]);
-
-      return books;
-    }, []);
-  }
-};
-console.log(`Lista de autores -> ${getBooksList(library)}`);
+  kodersTable.appendChild(koderRow);
+});
+document.querySelector(".koder-section").appendChild(kodersTable);
