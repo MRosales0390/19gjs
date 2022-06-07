@@ -9,26 +9,43 @@
     <title>Document</title>
     <link rel="stylesheet" href="" />
     <link rel="icon" type="image/x-icon" href="/images/homero_simpson.png" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <h1 class="title" id="title">Lorem</h1>
+    <h1>Dom Events</h1>
 
-    <div class="content">
-      <h2 class="subtitle">subtitulo</h2>
-      <h3 class="subtitle2">subtitulo</h3>
-    </div>
+    <button onclick="tarea1()">Ver ejercicio 1</button>
+    <button onclick="tarea2()">Ver ejercicio 2</button>
+    <button onclick="tarea3()">Ver ejercicio 3</button>
 
-    <ul>
-      <li class="item">lorem 1</li>
-      <li class="item">lorem</li>
-      <li class="item">lorem</li>
-      <li class="item">lorem</li>
-      <li class="item">lorem</li>
-    </ul>
+    <table>
+      <thead>
+        <th>nombre</th>
+        <th>edad</th>
+        <th>generación</th>
+      </thead>
+      <tbody></tbody>
+    </table>
 
-    <div class="koder-section"></div>
+    <div class="ejerciciouno"></div>
 
-    <script src="/js/dom.js"></script>
+    <div class="container cardCollection"></div>
+
+    <script src="/js/domEvents.js"></script>
     <script src="/js/homework.js"></script>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
