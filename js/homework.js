@@ -1,222 +1,373 @@
 /**
- * Ejercicio 1
- * 
-    <ul id="menu" class="menu">
-        <li class="item__menu">Inicio</li>
-        <li class="item__menu">Products</li>
-        <li class="item__menu">About Us</li>
-    </ul>
-    Replicar con JS este markup
+ * Ejercicio 2
+ * Generar una funcion que reciba como parametro un string
+ * y filtre solo los objetos que
+ * tengan en el name, username o email dicho string
+ * .filter()
+ * .forEach()
  */
 
-const tarea1 = () => {
-  const contenedor = document.querySelector(".ejerciciouno");
-  contenedor.innerHTML = `<ul class="lista" id="lista"></ul>`;
-  // const lista = document.createElement('ul')
-  // lista.setAttribute('id', 'lista')
-  // // setear clases
-  // // mediante atirbutos
-  // lista.setAttribute('class', 'lista lista3')
-  // // mediante metodos add/remove
-  // lista.classList.add('lista2')
-  // lista.classList.remove('lista2')
-  // contenedor.appendChild(lista)
-
-  let menus = ["Home", "Products", "About Us"];
-
-  let listItems = "";
-  menus.forEach((menu) => {
-    listItems += ` <li class="item__menu">${menu}</li>`;
-  });
-
-  console.log(listItems);
-  document.querySelector(".lista").innerHTML = listItems;
-};
-
-/**
- * Dado un arreglo de koders
- * 1. Generar una lista con la clase koders
- * 2. Agregar a cada koder en esa lista
- * 3. A todos los koders agregarles la clase 'item koder'
- */
-
-let koders = [
+let users = [
   {
-    name: "jorge luis",
-    lastName: "Camarillo",
-    age: 30,
-    generation: 6,
-    modulos: ["js", "node js", "cloud"],
-  },
-  {
-    name: "Erik",
-    lastName: "Gutierrez",
-    age: 20,
-    generation: 15,
-    modulos: ["Node"],
-  },
-  {
-    name: "Sara",
-    lastName: "Reveles",
-    age: 24,
-    generation: 12,
-    modulos: ["js"],
-  },
-];
-
-/**
- * Ejercicio 3
- * Del mismo arreglo de koders
- * 1. Generar una tabla de koders con las columnas
- *   - Nombre completo
- *   - Edad
- *   - Generación
- *
- *   Opcional -Modulos cursados
- *
- * Referencia: https://slack-files.com/TCRFJBKB6-F03J4CBCBA7-8b1c39e7bc
- *
- */
-
-const tarea3 = () => {
-  console.log("Ejecutando tarea 3");
-  let tbody = document.querySelector("tbody");
-  koders.forEach((koder, index, arr) => {
-    let tr = document.createElement("tr");
-    let tdName = document.createElement("td");
-    tdName.textContent = koder.name;
-    tr.appendChild(tdName);
-    let tdAge = document.createElement("td");
-    tdAge.textContent = koder.age;
-    tr.appendChild(tdAge);
-    let tdGen = document.createElement("td");
-    tdGen.textContent = koder.generation;
-    tr.appendChild(tdGen);
-    console.log(tr);
-    tbody.appendChild(tr);
-  });
-};
-
-/**
- * Tareas
- * 1. Optimizar todos los ejericios con innerHTML
- * 2. Resolver el siguiente ejercicio
- */
-
-/**
- * Ejercicio
- * Dado un array de álbumes
- * Imprimir en un grid de cards con los álbumes
- * Cada card debe tener
- * Id, Titulo e imagen del album
- *
- * Referencia
- * https://getbootstrap.com/docs/5.2/components/card/#grid-cards
- */
-
-const albumes = [
-  {
-    albumId: 1,
     id: 1,
-    title: "accusamus beatae ad facilis cum similique qui sunt",
-    url: "https://via.placeholder.com/600/92c952",
-    thumbnailUrl: "https://via.placeholder.com/150/92c952",
+    name: "Brad Graham",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    address: {
+      street: "Kulas Light",
+      suite: "Apt. 556",
+      city: "Gwenborough",
+      zipcode: "92998-3874",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496",
+      },
+    },
+    phone: "1-770-736-8031 x56442",
+    website: "hildegard.org",
+    company: {
+      name: "Romaguera-Crona",
+      catchPhrase: "Multi-layered client-server neural-net",
+      bs: "harness real-time e-markets",
+    },
   },
   {
-    albumId: 1,
     id: 2,
-    title: "reprehenderit est deserunt velit ipsam",
-    url: "https://via.placeholder.com/600/771796",
-    thumbnailUrl: "https://via.placeholder.com/150/771796",
+    name: "Brad fox",
+    username: "Bret",
+    email: "Sincere@april.biz",
+    address: {
+      street: "Kulas Light",
+      suite: "Apt. 556",
+      city: "Gwenborough",
+      zipcode: "92998-3874",
+      geo: {
+        lat: "-37.3159",
+        lng: "81.1496",
+      },
+    },
+    phone: "1-770-736-8031 x56442",
+    website: "hildegard.org",
+    company: {
+      name: "Romaguera-Crona",
+      catchPhrase: "Multi-layered client-server neural-net",
+      bs: "harness real-time e-markets",
+    },
   },
   {
-    albumId: 1,
     id: 3,
-    title: "officia porro iure quia iusto qui ipsa ut modi",
-    url: "https://via.placeholder.com/600/24f355",
-    thumbnailUrl: "https://via.placeholder.com/150/24f355",
+    name: "Ervin Howell",
+    username: "Antonette",
+    email: "Shanna@melissa.tv",
+    address: {
+      street: "Victor Plains",
+      suite: "Suite 879",
+      city: "Wisokyburgh",
+      zipcode: "90566-7771",
+      geo: {
+        lat: "-43.9509",
+        lng: "-34.4618",
+      },
+    },
+    phone: "010-692-6593 x09125",
+    website: "anastasia.net",
+    company: {
+      name: "Deckow-Crist",
+      catchPhrase: "Proactive didactic contingency",
+      bs: "synergize scalable supply-chains",
+    },
   },
   {
-    albumId: 1,
     id: 4,
-    title: "culpa odio esse rerum omnis laboriosam voluptate repudiandae",
-    url: "https://via.placeholder.com/600/d32776",
-    thumbnailUrl: "https://via.placeholder.com/150/d32776",
+    name: "Clementine Bauch",
+    username: "Samantha",
+    email: "Nathan@yesenia.net",
+    address: {
+      street: "Douglas Extension",
+      suite: "Suite 847",
+      city: "McKenziehaven",
+      zipcode: "59590-4157",
+      geo: {
+        lat: "-68.6102",
+        lng: "-47.0653",
+      },
+    },
+    phone: "1-463-123-4447",
+    website: "ramiro.info",
+    company: {
+      name: "Romaguera-Jacobson",
+      catchPhrase: "Face to face bifurcated interface",
+      bs: "e-enable strategic applications",
+    },
   },
   {
-    albumId: 1,
     id: 5,
-    title: "natus nisi omnis corporis facere molestiae rerum in",
-    url: "https://via.placeholder.com/600/f66b97",
-    thumbnailUrl: "https://via.placeholder.com/150/f66b97",
+    name: "Patricia Lebsack",
+    username: "Karianne",
+    email: "Julianne.OConner@kory.org",
+    address: {
+      street: "Hoeger Mall",
+      suite: "Apt. 692",
+      city: "South Elvis",
+      zipcode: "53919-4257",
+      geo: {
+        lat: "29.4572",
+        lng: "-164.2990",
+      },
+    },
+    phone: "493-170-9623 x156",
+    website: "kale.biz",
+    company: {
+      name: "Robel-Corkery",
+      catchPhrase: "Multi-tiered zero tolerance productivity",
+      bs: "transition cutting-edge web services",
+    },
   },
   {
-    albumId: 1,
     id: 6,
-    title: "accusamus ea aliquid et amet sequi nemo",
-    url: "https://via.placeholder.com/600/56a8c2",
-    thumbnailUrl: "https://via.placeholder.com/150/56a8c2",
+    name: "Patricia Jones",
+    username: "Karianne",
+    email: "Julianne.OConner@kory.org",
+    address: {
+      street: "Hoeger Mall",
+      suite: "Apt. 692",
+      city: "South Elvis",
+      zipcode: "53919-4257",
+      geo: {
+        lat: "29.4572",
+        lng: "-164.2990",
+      },
+    },
+    phone: "493-170-9623 x156",
+    website: "kale.biz",
+    company: {
+      name: "Robel-Corkery",
+      catchPhrase: "Multi-tiered zero tolerance productivity",
+      bs: "transition cutting-edge web services",
+    },
   },
   {
-    albumId: 1,
     id: 7,
-    title: "officia delectus consequatur vero aut veniam explicabo molestias",
-    url: "https://via.placeholder.com/600/b0f7cc",
-    thumbnailUrl: "https://via.placeholder.com/150/b0f7cc",
+    name: "Chelsey Dietrich",
+    username: "Kamren",
+    email: "Lucio_Hettinger@annie.ca",
+    address: {
+      street: "Skiles Walks",
+      suite: "Suite 351",
+      city: "Roscoeview",
+      zipcode: "33263",
+      geo: {
+        lat: "-31.8129",
+        lng: "62.5342",
+      },
+    },
+    phone: "(254)954-1289",
+    website: "demarco.info",
+    company: {
+      name: "Keebler LLC",
+      catchPhrase: "User-centric fault-tolerant solution",
+      bs: "revolutionize end-to-end systems",
+    },
   },
   {
-    albumId: 1,
     id: 8,
-    title: "aut porro officiis laborum odit ea laudantium corporis",
-    url: "https://via.placeholder.com/600/54176f",
-    thumbnailUrl: "https://via.placeholder.com/150/54176f",
+    name: "Mrs. Dennis Schulist",
+    username: "Leopoldo_Corkery",
+    email: "Karley_Dach@jasper.info",
+    address: {
+      street: "Norberto Crossing",
+      suite: "Apt. 950",
+      city: "South Christy",
+      zipcode: "23505-1337",
+      geo: {
+        lat: "-71.4197",
+        lng: "71.7478",
+      },
+    },
+    phone: "1-477-935-8478 x6430",
+    website: "ola.org",
+    company: {
+      name: "Considine-Lockman",
+      catchPhrase: "Synchronised bottom-line interface",
+      bs: "e-enable innovative applications",
+    },
   },
   {
-    albumId: 1,
     id: 9,
-    title: "qui eius qui autem sed",
-    url: "https://via.placeholder.com/600/51aa97",
-    thumbnailUrl: "https://via.placeholder.com/150/51aa97",
+    name: "Kurtis Weissnat",
+    username: "Elwyn.Skiles",
+    email: "Telly.Hoeger@billy.biz",
+    address: {
+      street: "Rex Trail",
+      suite: "Suite 280",
+      city: "Howemouth",
+      zipcode: "58804-1099",
+      geo: {
+        lat: "24.8918",
+        lng: "21.8984",
+      },
+    },
+    phone: "210.067.6132",
+    website: "elvis.io",
+    company: {
+      name: "Johns Group",
+      catchPhrase: "Configurable multimedia task-force",
+      bs: "generate enterprise e-tailers",
+    },
   },
   {
-    albumId: 1,
     id: 10,
-    title: "beatae et provident et ut vel",
-    url: "https://via.placeholder.com/600/810b14",
-    thumbnailUrl: "https://via.placeholder.com/150/810b14",
+    name: "Nicholas Runolfsdottir V",
+    username: "Maxime_Nienow",
+    email: "Sherwood@rosamond.me",
+    address: {
+      street: "Ellsworth Summit",
+      suite: "Suite 729",
+      city: "Aliyaview",
+      zipcode: "45169",
+      geo: {
+        lat: "-14.3990",
+        lng: "-120.7677",
+      },
+    },
+    phone: "586.493.6943 x140",
+    website: "jacynthe.com",
+    company: {
+      name: "Abernathy Group",
+      catchPhrase: "Implemented secondary concept",
+      bs: "e-enable extensible e-tailers",
+    },
+  },
+  {
+    id: 11,
+    name: "Glenna Reichert",
+    username: "Delphine",
+    email: "Chaim_McDermott@dana.io",
+    address: {
+      street: "Dayna Park",
+      suite: "Suite 449",
+      city: "Bartholomebury",
+      zipcode: "76495-3109",
+      geo: {
+        lat: "24.6463",
+        lng: "-168.8889",
+      },
+    },
+    phone: "(775)976-6794 x41206",
+    website: "conrad.com",
+    company: {
+      name: "Yost and Sons",
+      catchPhrase: "Switchable contextually-based project",
+      bs: "aggregate real-time technologies",
+    },
+  },
+  {
+    id: 12,
+    name: "Clementina DuBuque",
+    username: "Moriah.Stanton",
+    email: "Rey.Padberg@karina.biz",
+    address: {
+      street: "Kattie Turnpike",
+      suite: "Suite 198",
+      city: "Lebsackbury",
+      zipcode: "31428-2261",
+      geo: {
+        lat: "-38.2386",
+        lng: "57.2232",
+      },
+    },
+    phone: "024-648-3804",
+    website: "ambrose.net",
+    company: {
+      name: "Hoeger LLC",
+      catchPhrase: "Centralized empowering task-force",
+      bs: "target end-to-end models",
+    },
+  },
+  {
+    id: 13,
+    name: "Jorge Camarillo",
+    username: "jorge.Camarillo",
+    email: "jorge.camarillo@kodemia.mx",
+    address: {
+      street: "Kattie Turnpike",
+      suite: "Suite 198",
+      city: "Lebsackbury",
+      zipcode: "31428-2261",
+      geo: {
+        lat: "-38.2386",
+        lng: "57.2232",
+      },
+    },
+    phone: "024-648-3804",
+    website: "ambrose.net",
+    company: {
+      name: "Hoeger LLC",
+      catchPhrase: "Centralized empowering task-force",
+      bs: "target end-to-end models",
+    },
+  },
+  {
+    id: 14,
+    name: "Isaac luna",
+    username: "Isaac.luna",
+    email: "isaac.luna@gmail.com",
+    address: {
+      street: "Kattie Turnpike",
+      suite: "Suite 198",
+      city: "Lebsackbury",
+      zipcode: "31428-2261",
+      geo: {
+        lat: "-38.2386",
+        lng: "57.2232",
+      },
+    },
+    phone: "024-648-3804",
+    website: "ambrose.net",
+    company: {
+      name: "Hoeger LLC",
+      catchPhrase: "Centralized empowering task-force",
+      bs: "target end-to-end models",
+    },
   },
 ];
 
-const buildCards = (albumList) => {
-  const container = document.querySelector(".cardCollection");
-  container.innerHTML = `<div class="row row-cols-1 row-cols-md-2 g-4 cardContainer"></div>`;
+const filterUsers = (usersArray, strToFilter) => {
+  let lowerCaseTerm = strToFilter ? strToFilter.toLowerCase() : "";
 
-  let cardList = "";
+  let usersList = document.getElementById("lista__users");
 
-  albumList.forEach((album) => {
-    cardList += `
-    <div class="col">
-        <div class="card">
-        <img src="${album.url}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">${album.id}</h5>
-            <p class="card-text">${album.title}</p>
-        </div>
-        </div>
-    </div>
-  `;
-  });
-
-  document.querySelector(".cardContainer").innerHTML = cardList;
+  usersList.innerHTML = createGroupItemTemplate(
+    usersArray.filter((user) => {
+      return (
+        user.name.toLowerCase().includes(lowerCaseTerm) ||
+        user.email.toLowerCase().includes(lowerCaseTerm) ||
+        user.username.toLowerCase().includes(lowerCaseTerm)
+      );
+    })
+  );
 };
 
-const tarea2 = () => {
-  buildCards(albumes);
+const createGroupItemTemplate = (usersArray) => {
+  let template = "";
+
+  if (usersArray) {
+    usersArray.forEach((user, index) => {
+      template += `
+        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">${user.name}</h5>
+            <small>${index + 1} days ago</small>
+            </div>
+            <p class="mb-1">${user.username}</p>
+            <small>${user.email}</small>
+        </a>
+      `;
+    });
+  }
+
+  return template;
 };
-/**
- * Tarea
- * Estudiar el tema JavaScript HTML DOM EventListener
- * https://www.w3schools.com/js/js_htmldom_eventlistener.asp
- * https://developer.mozilla.org/es/docs/Web/API/EventTarget/addEventListener
- * https://www.freecodecamp.org/news/javascript-addeventlistener-example-code/
- */
+
+let searchBox = document.getElementById("filter__user");
+searchBox.addEventListener("keyup", () => filterUsers(users, searchBox.value));
