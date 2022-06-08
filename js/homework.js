@@ -359,8 +359,8 @@ const createGroupItemTemplate = (usersArray) => {
             <h5 class="mb-1">${user.name}</h5>
             <small>${index + 1} days ago</small>
             </div>
-            <p class="mb-1">${user.username}</p>
-            <small>${user.email}</small>
+            <p class="mb-1">${user.email}</p>
+            <small>${user.phone}</small>
         </a>
       `;
     });
