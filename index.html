@@ -21,37 +21,25 @@
   </head>
   <body>
     <main class="main">
-      <div class="container">
-        <button id="btnAlbumes">Load Albumes</button>
-        <div class="card__albumes"></div>
+      <h1>Directorio de Usuarios</h1>
+      <div class="d-flex justify-content-center">
+        <div class="p-2 bg-light border w-50">
+          <section class="filter__group">
+            <input
+              type="text"
+              placeholder="Filtrar por nombre"
+              id="filter__user"
+              class="form-control"
+            />
+          </section>
 
-        <h2>Posts</h2>
-        <div id="lista__posts" class="list-group">
-          <!-- all los posts -->
+          <div id="lista__users" class="list-group">
+            <!-- Lista de usuarios -->
+          </div>
         </div>
       </div>
-
-      <div class="p-2 bg-light border">
-        <section class="filter__group">
-          <input
-            type="text"
-            placeholder="Filtrar por nombre"
-            id="filter__user"
-            class="form-control"
-          />
-        </section>
-
-        <div id="lista__users" class="list-group">
-          <!-- Lista de usuarios -->
-        </div>
-      </div>
-      <!-- keyup, keypress, keydown, focus, blur, change -->
-      <!--<input type="text" />-->
-
-      <!-- click, focus, doubleClick, rightClick, keypress -->
-      <!--<button>fake</button>-->
     </main>
-    <script src="/js/eventListener.js"></script>
+    <script src="/js/ajax.js"></script>
     <!--<script src="/js/exercises.js"></script>-->
     <script src="/js/homework.js"></script>
     <!-- JavaScript Bundle with Popper -->
