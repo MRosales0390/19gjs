@@ -17,9 +17,21 @@
     <main class="main">
       <h1>All Posts</h1>
       <section class="container">
-        <div id="posts__group" class="row row-cols-1 row-cols-md-2 g-4"></div>
+        <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+          <div class="col text-center">
+            <button
+              id="load__posts"
+              type="button"
+              class="btn btn-outline-secondary mb-1"
+            >
+              Cargar Posts
+            </button>
+            <div class="accordion" id="posts__group"></div>
+          </div>
+        </div>
       </section>
     </main>
     <script src="/js/postsAjax.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

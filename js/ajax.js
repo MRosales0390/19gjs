@@ -17,85 +17,124 @@
 // recibir response
 // procesar el response
 
-// Create an XMLHttpRequest object
-const primerPeticion = new XMLHttpRequest();
+/** POST */
+const createUser = (objectUser) => {
+  const xhttp = new XMLHttpRequest();
 
-let users = [];
-
-// Define a callback function
-primerPeticion.onload = (response) => {
-  // Here you can use the Data
-  console.log("REspuesta lista");
-  console.log(response.target);
-
-  if (response.target.status >= 200 && response.target.status <= 299) {
-    // la respuesta fue satisfactoria
-    if (response.target.responseText != "") {
-      console.log(response.target.responseText);
-      // JSON
-      // metodos
-      // .parse( text - Object )
-      // .stringify( obj - text)
-
-      let responseJSON = JSON.parse(response.target.responseText);
-      users = responseJSON;
-    }
-    //printUsers(users);
-  }
-};
-
-// Send a request
-// GET, POST, DELETE, PATCH, PUT
-primerPeticion.open("GET", "https://jsonplaceholder.typicode.com/users", false);
-// console.log(primerPeticion)
-primerPeticion.send();
-// console.log(primerPeticion)
-
-/**
- * Ejercicio 2
- * Generar una funcion que reciba como parametro un string
- * y filtre solo los objetos que
- * tengan en el name, username o email dicho string
- * .filter()
- * .forEach()
- */
-
-const filterUsers = (usersArray, strToFilter) => {
-  let lowerCaseTerm = strToFilter ? strToFilter.toLowerCase() : "";
-
-  let usersList = document.getElementById("lista__users");
-
-  usersList.innerHTML = createGroupItemTemplate(
-    usersArray.filter((user) => {
-      return (
-        user.name.toLowerCase().includes(lowerCaseTerm) ||
-        user.email.toLowerCase().includes(lowerCaseTerm) ||
-        user.username.toLowerCase().includes(lowerCaseTerm)
-      );
-    })
+  xhttp.open(
+    "POST",
+    "https://koder19g-default-rtdb.firebaseio.com/users/.json",
+    true
   );
+  xhttp.onload = function (data) {
+    if (data.target.status >= 200 && data.target.status <= 299) {
+      console.log(data);
+    }
+  };
+
+  xhttp.send(JSON.stringify(objectUser));
 };
 
-const createGroupItemTemplate = (usersArray) => {
-  let template = "";
+let user = {
+  name: "Lucky",
+  lastName: "Rosales",
+  age: 8,
+};
 
-  if (usersArray) {
-    usersArray.forEach((user, index) => {
-      template += `
-          <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-              <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">${user.name}</h5>
-              <small>${index + 1} days ago</small>
-              </div>
-              <p class="mb-1">${user.email}</p>
-              <small>${user.phone}</small>
-          </a>
-        `;
-    });
+//createUser(user);
+/** PATCH */
+const updateUser = (userToUpdate) => {
+  const updateXHR = new XMLHttpRequest();
+  updateXHR.open(
+    "PATCH",
+    "https://koder19g-default-rtdb.firebaseio.com/users/-N4AJrnAGxHp5JKmMg6a.json",
+    true
+  );
+
+  updateXHR.onload = (response) => {
+    if (response.target.status >= 200 && response.target.status <= 299) {
+    }
+  };
+  updateXHR.send(JSON.stringify(userToUpdate));
+};
+
+let updatedUser = {
+  name: "Marco Antonio",
+};
+
+//updateUser(updatedUser);
+
+/** PUT */
+const updateUserPUT = (userToUpdate) => {
+  const updateXHR = new XMLHttpRequest();
+
+  updateXHR.open(
+    "PUT",
+    "https://koder19g-default-rtdb.firebaseio.com/users/-N4AJrnAGxHp5JKmMg6a.json",
+    true
+  );
+
+  updateXHR.onload = (response) => {
+    if (response.target.status >= 200 && response.target.status <= 299) {
+      console.log(response.target.response);
+    }
+  };
+
+  updateXHR.send(JSON.stringify(userToUpdate));
+};
+
+let updatedUserPUT = {
+  name: "Marco Antonio",
+  lastName: "Rosales Contreras",
+  age: 32,
+};
+
+//updateUserPUT(updatedUserPUT);
+
+/** DELETE */
+const deleteUser = (idUser) => {
+  const deletexhr = new XMLHttpRequest();
+  deletexhr.open(
+    "DELETE",
+    `https://koder19g-default-rtdb.firebaseio.com/users/${idUser}.json`,
+    true
+  );
+  deletexhr.onload = (response) => {
+    if (response.target.status >= 200 && response.target.status <= 399) {
+      console.log(response.target);
+      console.log(response.target.response);
+    }
+  };
+  deletexhr.send();
+};
+
+//deleteUser("-N4AGjt5C671BcB1NQO_");
+
+const getUsers = (callback) => {
+  const getxhr = new XMLHttpRequest();
+
+  getxhr.open(
+    "GET",
+    "https://koder19g-default-rtdb.firebaseio.com/users/.json",
+    true
+  );
+
+  getxhr.onload = (response) => {
+    if (response.target.status >= 200 && response.target.status <= 399) {
+      let users = JSON.parse(response.target.response);
+
+      callback(users);
+    }
+  };
+  getxhr.send();
+};
+
+const printUsers = (users) => {
+  for (user in users) {
+    //console.log(users);
+
+    console.log(users[user].name);
   }
-
-  return template;
 };
 
-let searchBox = document.getElementById("filter__user");
-searchBox.addEventListener("keyup", () => filterUsers(users, searchBox.value));
+getUsers(printUsers);

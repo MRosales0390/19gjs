@@ -1,53 +1,97 @@
-const xmlHttpRequestObj = new XMLHttpRequest();
-let posts = [];
+const getAllPosts = (fillPostsSection = 0) => {
+  const xmlHttpRequestObj = new XMLHttpRequest();
+  let posts = [];
 
-xmlHttpRequestObj.onload = (response) => {
-  // Here you can use the Data
-  if (response.target.status >= 200 && response.target.status <= 299) {
-    // la respuesta fue satisfactoria
-    if (response.target.responseText != "") {
-      let responseJSON = JSON.parse(response.target.responseText);
-      posts = responseJSON;
+  xmlHttpRequestObj.onload = (response) => {
+    // Here you can use the Data
+    if (response.target.status >= 200 && response.target.status <= 299) {
+      // la respuesta fue satisfactoria
+      if (response.target.responseText != "") {
+        let responseJSON = JSON.parse(response.target.responseText);
+        posts = responseJSON;
 
-      console.log(posts);
+        if (fillPostsSection === 1) createGroupItemTemplate(posts);
+      }
     }
-    //printUsers(users);
-  }
-};
+  };
 
-// Send a request
-// GET, POST, DELETE, PATCH, PUT
-xmlHttpRequestObj.open(
-  "GET",
-  "https://jsonplaceholder.typicode.com/posts",
-  false
-);
-// console.log(primerPeticion)
-xmlHttpRequestObj.send();
+  xmlHttpRequestObj.open(
+    "GET",
+    //"https://jsonplaceholder.typicode.com/posts",
+    "https://koder19g-default-rtdb.firebaseio.com/posts/.json",
+    true
+  );
+
+  xmlHttpRequestObj.send();
+
+  return posts;
+};
 
 const createGroupItemTemplate = (postsArray) => {
   let template = "";
-
+  console.log("Create", typeof postsArray);
   if (postsArray) {
-    postsArray.forEach((post) => {
+    let counter = 1;
+    for (post in postsArray) {
       template += `
-        <div class="col-12 col-sm-6 col-md-4 mb-4">
-            <div class="card h-100">
-                <img src="https://via.placeholder.com/150x100" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">${post.title}</h5>
-                    <p class="card-text">${post.body}</p>
-                    <p class="card-text"><small class="text-muted">${post.id}</small></p>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading${counter}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${counter}" aria-expanded="true" aria-controls="collapse${counter}">
+                ${postsArray[post].title}
+                </button>
+            </h2>
+            <div id="collapse${counter}" class="accordion-collapse collapse" aria-labelledby="heading${counter}" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                ${postsArray[post].body}
                 </div>
+                <small class="text-muted"> ${postsArray[post].date.replaceAll(
+                  '"',
+                  ""
+                )}</small>
             </div>
         </div>
         `;
-    });
+
+      counter++;
+    }
   }
 
   document.querySelector("#posts__group").innerHTML = template;
 };
 
-document.addEventListener("DOMContentLoaded", () =>
-  createGroupItemTemplate(posts)
-);
+/** Post Creation */
+const createPosts = (postToCreate) => {
+  const xhrCreate = new XMLHttpRequest();
+
+  xhrCreate.open(
+    "POST",
+    "https://koder19g-default-rtdb.firebaseio.com/posts/.json",
+    true
+  );
+
+  xhrCreate.onload = function (response) {
+    if (response.target.status >= 200 && response.target.status <= 399) {
+    }
+  };
+
+  xhrCreate.send(JSON.stringify(postToCreate));
+};
+
+const populatePosts = () => {
+  let posts = getAllPosts();
+
+  for (post in posts) {
+    let newPost = {
+      title: `"${posts[post].title}"`,
+      body: `"${posts[post].body}"`,
+      date: `"06/01/2022"`,
+    };
+
+    createPosts(newPost);
+  }
+};
+
+//populatePosts();
+document.querySelector("#load__posts").addEventListener("click", () => {
+  getAllPosts(1);
+});
