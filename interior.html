@@ -17,7 +17,7 @@
     />
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
-  <body class="bg-light">
+  <body>
     <main class="main">
       <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
@@ -36,27 +36,18 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="createkoder.html">Nuevo Koder</a>
+                <a class="nav-link" href="#">Nuevo Koder</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
       <div class="container">
-        <h1 class="mt-5 text-center mb-5">Lista de koders</h1>
-
         <div class="container__posts">
-          <div class="row all__posts"></div>
-          <div class="row">
-            <div class="col-12 text-center mt-5 mb-5">
-              <a href="/createkoder.html" class="btn btn-primary"
-                >Nuevo Koder</a
-              >
-            </div>
-          </div>
+          <div class="row wrap__koder d-flex justify-content-center mt-5"></div>
         </div>
       </div>
     </main>
@@ -69,6 +60,6 @@
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
-    <script src="/js/listkoders.js"></script>
+    <script src="/js/viewkoder.js"></script>
   </body>
 </html>
