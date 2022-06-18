@@ -5,7 +5,7 @@ console.log("SU codigo para ver todos los koders");
 const xhttp = new XMLHttpRequest();
 xhttp.open(
   "GET",
-  `https://koders19gjs-default-rtdb.firebaseio.com/koders/.json`,
+  `https://koder19g-default-rtdb.firebaseio.com/koders/.json`,
   true
 );
 xhttp.onload = function (data) {

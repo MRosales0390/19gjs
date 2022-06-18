@@ -14,7 +14,7 @@ console.log(idKoder);
 const xhttp = new XMLHttpRequest();
 xhttp.open(
   "GET",
-  `https://koders19gjs-default-rtdb.firebaseio.com/koders/${idKoder}.json`,
+  `https://koder19g-default-rtdb.firebaseio.com/koders/${idKoder}.json`,
   true
 );
 xhttp.onload = function (data) {

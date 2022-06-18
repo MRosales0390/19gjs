@@ -9,7 +9,7 @@ btnEnviar.addEventListener("click", () => {
   let biography = document.getElementById("biografia").value;
   let bootcamp = document.getElementById("bootcamp").value;
 
-  console.log(name, age, biography, bootcamp);
+  //console.log(name, age, biography, bootcamp);
 
   // validar la data
   if (name === "" || age === "" || biography === "" || bootcamp === "") {
@@ -23,9 +23,10 @@ btnEnviar.addEventListener("click", () => {
       bootcamp: bootcamp,
     };
 
-    console.log(newKoder);
+    //console.log(newKoder);
 
     // hacer el envio
+    /*
     const httpXHR = new XMLHttpRequest();
 
     httpXHR.onload = (response) => {
@@ -43,11 +44,31 @@ btnEnviar.addEventListener("click", () => {
       "https://koders19gjs-default-rtdb.firebaseio.com/koders/.json",
       true
     );
+
     console.log(httpXHR);
 
     // enviar
     // texto plano NOtacion de JSON
     // console.log(JSON.stringify(newKoder))
     httpXHR.send(JSON.stringify(newKoder));
+    */
+    fetch("https://koder19g-default-rtdb.firebaseio.com/koders/.json", {
+      method: "POST",
+      body: JSON.stringify(newKoder),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((finalResponse) => {
+        console.log(finalResponse);
+
+        alert(`Koder registrado exitosamente con el id ${finalResponse.name}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 });
